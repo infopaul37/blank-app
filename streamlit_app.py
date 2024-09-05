@@ -32,7 +32,7 @@ df = pd.DataFrame(
         "Temperatures": [-99,-99,-99],
         }
 )
-resultat = df.Cities.apply(get_current_weather)
-print(resultat)
+resultat = df.Cities.apply(get_current_weather,)
+print(resultat['data'])
 
 st.dataframe(df, use_container_width=True)
