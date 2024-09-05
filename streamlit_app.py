@@ -1,17 +1,16 @@
 import streamlit as st
+import pandas as pd
 
 st.title("Weather App ")
 st.write(
     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )
-import streamlit as st
-import pandas as pd
 
 df = pd.DataFrame(
     [
-        {"temperature": "st.selectbox", "place": "paris"},
-        {"temperature": "st.balloons", "place": "tokyo"},
-        {"temperature": "st.time_input", "place": "Londres"}
+        {"Temperature": "Paris", "Place": 15},
+        {"Temperature": "Londres", "Place": 15},
+        {"Temperature": "Tokyo", "Place": 15},
     ]
 )
 
