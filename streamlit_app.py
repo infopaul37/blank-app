@@ -10,7 +10,7 @@ st.write(
     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )
 
-def get_current_weather(city, api_key, country='France'):
+def get_current_weather(city, api_key = "32af0f6ca0b24b1793376130cc6b9b9b", country ='FR'):
     global ENDPOINT
     query = {
         "city": city, 
@@ -27,9 +27,13 @@ def get_current_weather(city, api_key, country='France'):
 get_current_weather('Paris', api_key='32af0f6ca0b24b1793376130cc6b9b9b')
 
 df = pd.DataFrame(
-        {"Cities": ["Paris","Londres", "Tokyo"], "Temperatures": [15,15,15]},
+        {
+        "Countries": ["FR", "UK", "Japan" ],
+        "Cities": ["Paris","avignon", "dijon",],
+        "Temperatures": [-99,-99,-99],
+        }
 )
-
-
+resultat = df.Cities.apply(get_current_weather)
+print(resultat)
 
 st.dataframe(df, use_container_width=True)
