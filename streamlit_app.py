@@ -3,32 +3,33 @@ import pandas as pd
 import requests
 
 # endpoint est une variable qui contient le lien sans les parametres pour acceder à la météo depuis le fournisseur de service
-ENDPOINT = "https://api.weatherbit.io/v2.0/current?"
+ENDPOINT = "https://api.weatherbit.io/v2.0/current"
 
 st.title("Weather App ")
 st.write(
     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )
 
-def get_current_weather(city, country,api_key):
+def get_current_weather(city, api_key, country='France'):
     global ENDPOINT
     query = {
-        "city":'Paris', 
-        "country":'France',
-        "key": '32af0f6ca0b24b1793376130cc6b9b9b',
+        "city": city, 
+        "country": country,
+        "key": api_key,
         "include": 'minutely'
     }
-    response = requests.get('http://api.open-notify.org/iss-pass.json', params=query)
-    print(response.json())
-    return response.json()
+
+    response = requests.get(ENDPOINT, params=query)
+    response = response.json()
+    print(response)
+    return response
     
+get_current_weather('Paris', api_key='32af0f6ca0b24b1793376130cc6b9b9b')
 
 df = pd.DataFrame(
-    [
-        {"City": "Paris", "Temperature": 15},
-        {"City": "Londres", "Temperature": 15},
-        {"City": "Tokyo", "Temperature": 15},
-    ]
+        {"Cities": ["Paris","Londres", "Tokyo"], "Temperatures": [15,15,15]},
 )
+
+
 
 st.dataframe(df, use_container_width=True)
