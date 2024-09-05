@@ -15,7 +15,6 @@ df = pd.DataFrame(
 )
 
 st.dataframe(df, use_container_width=True)
-
 lien_api = "https://api.weatherbit.io/v2.0/current" 
 +"&city=Paris&country=France"
 + "&key=32af0f6ca0b24b1793376130cc6b9b9b" 
