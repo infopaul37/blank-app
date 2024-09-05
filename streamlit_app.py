@@ -16,7 +16,6 @@ def get_current_weather(city, api_key = "32af0f6ca0b24b1793376130cc6b9b9b", coun
         "city": city, 
         "country": country,
         "key": api_key,
-        "include": 'minutely'
     }
 
     response = requests.get(ENDPOINT, params=query)
